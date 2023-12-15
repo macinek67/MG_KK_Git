@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MG_KK_Git.LoginPage" NavigationPage.HasNavigationBar="False">
+             x:Class="MG_KK_Git.LoginPage" NavigationPage.HasNavigationBar="False" BackgroundColor="#3e3e3e">
     <ContentPage.Content>
-        <StackLayout>
-            
+        <StackLayout Margin="15,25,15,0">
+            <Label Text="Login:" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="Login_Entry" TextColor="LightGray" WidthRequest="200"/>
+            <Label Text="Haslo:" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="Password_Entry" IsPassword="True" TextColor="LightGray" WidthRequest="200"/>
+            <Button x:Name="Login_Button" Clicked="Login_Button_Clicked" Text="ZALOGUJ" BackgroundColor="CadetBlue"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

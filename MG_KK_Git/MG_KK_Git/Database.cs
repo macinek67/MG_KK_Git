@@ -32,5 +32,20 @@ namespace MG_KK_Git
         {
             return _database.QueryAsync<User>("SELECT * FROM User WHERE Login=? AND Password=?", login, password);
         }
+
+        public Task<List<Subject>> GetSubjects()
+        {
+            return _database.QueryAsync<Subject>("SELECT * FROM Subject");
+        }
+
+        public Task<List<Score>> GetScories()
+        {
+            return _database.QueryAsync<Score>("SELECT * FROM Score");
+        }
+
+        public Task<List<Score>> GetScories(int subject_id)
+        {
+            return _database.QueryAsync<Score>("SELECT * FROM Score WHERE Subject_id=?", subject_id);
+        }
     }
 }
