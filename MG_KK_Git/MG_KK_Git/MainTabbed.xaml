@@ -78,7 +78,7 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Label Text="{Binding [0]}" LineBreakMode="TailTruncation" MaxLines="1" FontSize="20" VerticalOptions="Center" TextColor="White"/>
-                                        <Label Text="{Binding [1]}" TextColor="white" VerticalOptions="Center"/>
+                                        <Label Text="{Binding [1]}" Grid.Row="1" TextColor="white" VerticalOptions="Center"/>
                                     </Grid>
                                 </Frame>
                             </ViewCell>
@@ -100,7 +100,7 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Label Text="{Binding [0]}" LineBreakMode="TailTruncation" MaxLines="1" TextColor="White"/>
-                                        <Label Text="{Binding [1]}" TextColor="white"/>
+                                        <Label Text="{Binding [1]}" Grid.Row="1" TextColor="white"/>
                                     </Grid>
                                 </Frame>
                             </ViewCell>
