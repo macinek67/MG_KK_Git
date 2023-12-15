@@ -15,5 +15,6 @@ namespace MG_KK_Git.Tables
         public string Value { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
+        public string Period { get; set; }
     }
 }
