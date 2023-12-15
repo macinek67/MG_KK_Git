@@ -24,7 +24,7 @@ namespace MG_KK_Git
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainTabbed());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
