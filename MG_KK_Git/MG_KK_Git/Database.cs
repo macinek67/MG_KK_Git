@@ -43,9 +43,19 @@ namespace MG_KK_Git
             return _database.QueryAsync<Score>("SELECT * FROM Score");
         }
 
-        public Task<List<Score>> GetScories(int subject_id)
+        public Task<int> InsertSubject(Subject subject)
         {
-            return _database.QueryAsync<Score>("SELECT * FROM Score WHERE Subject_id=?", subject_id);
+            return _database.InsertAsync(subject);
+        }
+
+        public Task<int> InsertScore(Score score)
+        {
+            return _database.InsertAsync(score);
+        }
+
+        public Task<List<Score>> GetScories(int user_id, int subject_id, string period)
+        {
+            return _database.QueryAsync<Score>("SELECT * FROM Score WHERE User_id=? AND Subject_id=? AND Period=?", user_id, subject_id, period);
         }
     }
 }

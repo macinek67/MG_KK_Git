@@ -19,6 +19,7 @@ namespace MG_KK_Git
             InitializeComponent();
             this.user = user;
             //dodaj();
+            UploadData();
         }
 
         public async void dodaj()
@@ -32,24 +33,57 @@ namespace MG_KK_Git
             //    IsTeacher = true
             //};
             //await App.Database.InsertUser(x);
+            //Subject sbj = new Subject()
+            //{
+            //    Name = "Programowanie"
+            //};
+            //await App.Database.InsertSubject(sbj);
+            //Score s = new Score()
+            //{
+            //    User_id = 1,
+            //    Subject_id = 1,
+            //    Subject_name = "Programowanie",
+            //    Value = "5+",
+            //    Date = DateTime.Now,
+            //    Description = "Sprawdzian",
+            //    Period = "Okres 1"
+            //};
+            //await App.Database.InsertScore(s);
         }
 
         public async void UploadData()
         {
+            LV_UserScoresLast.ItemsSource = await App.Database.GetScories();
+
             List<List<string>> period1_Scories = new List<List<string>>();
+            //List<List<string>> period2_Scories = new List<List<string>>();
 
             var subjects = await App.Database.GetSubjects();
             foreach (var subject in subjects)
             {
                 List<string> row = new List<string>();
 
-                var scories = await App.Database.GetScories(subject.Subject_id);
-                string scoriesText = "";
-                foreach (var score in scories)
+                var scoriesPeriodOne = await App.Database.GetScories(this.user.User_id, subject.Subject_id, "Okres 1");
+                string scoriesPeriodOneText = "";
+                foreach (var score in scoriesPeriodOne)
                 {
-                    scoriesText += score.Value + " ";
+                    scoriesPeriodOneText += score.Value + " ";
                 }
-                row.Add(scoriesText);
+                row.Add(scoriesPeriodOneText);
+                row.Add(subject.Name);
+            }
+
+            foreach (var subject in subjects)
+            {
+                List<string> row = new List<string>();
+
+                var scoriesPeriodTwo = await App.Database.GetScories(this.user.User_id, subject.Subject_id, "Okres 2");
+                string scoriesPeriodTwoText = "";
+                foreach (var score in scoriesPeriodTwo)
+                {
+                    scoriesPeriodTwoText += score.Value + " ";
+                }
+                row.Add(scoriesPeriodTwoText);
                 row.Add(subject.Name);
             }
         }
