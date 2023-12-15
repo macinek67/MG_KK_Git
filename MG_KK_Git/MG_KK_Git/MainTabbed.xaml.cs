@@ -53,10 +53,10 @@ namespace MG_KK_Git
 
         public async void UploadData()
         {
-            LV_UserScoresLast.ItemsSource = await App.Database.GetScories();
+            LV_UserScores.ItemsSource = await App.Database.GetScories();
 
             List<List<string>> period1_Scories = new List<List<string>>();
-            //List<List<string>> period2_Scories = new List<List<string>>();
+            List<List<string>> period2_Scories = new List<List<string>>();
 
             var subjects = await App.Database.GetSubjects();
             foreach (var subject in subjects)
@@ -71,6 +71,8 @@ namespace MG_KK_Git
                 }
                 row.Add(scoriesPeriodOneText);
                 row.Add(subject.Name);
+
+                period1_Scories.Add(row);
             }
 
             foreach (var subject in subjects)
@@ -85,7 +87,12 @@ namespace MG_KK_Git
                 }
                 row.Add(scoriesPeriodTwoText);
                 row.Add(subject.Name);
+
+                period2_Scories.Add(row);
             }
+
+            LV_UserScores_Period_1.ItemsSource = period1_Scories;
+            LV_UserScores_Period_2.ItemsSource = period2_Scories;
         }
     }
 }
