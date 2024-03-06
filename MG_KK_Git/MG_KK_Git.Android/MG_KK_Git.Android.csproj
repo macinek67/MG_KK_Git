@@ -101,6 +101,7 @@
     <AndroidResource Include="Resources\drawable\home.png" />
     <AndroidResource Include="Resources\drawable\scores.png" />
     <AndroidResource Include="Resources\drawable\user.png" />
+    <AndroidResource Include="Resources\drawable\info.png" />
     <Content Include="scores.png" />
     <Content Include="user.png" />
   </ItemGroup>

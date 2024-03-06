@@ -15,7 +15,7 @@ namespace MG_KK_Git
             {
                 if (database == null)
                 {
-                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "librus.db3"));
+                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "librus3.db3"));
                 }
                 return database;
             }
@@ -24,7 +24,7 @@ namespace MG_KK_Git
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.Black};
         }
 
         protected override void OnStart()

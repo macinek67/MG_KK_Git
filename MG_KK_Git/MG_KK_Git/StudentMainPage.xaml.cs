@@ -11,50 +11,18 @@ using Xamarin.Forms.Xaml;
 namespace MG_KK_Git
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainTabbed : TabbedPage
+    public partial class StudentMainPage : TabbedPage
     {
         User user;
-        public MainTabbed(User user)
+        public StudentMainPage(User user)
         {
             InitializeComponent();
             this.user = user;
-            //dodaj();
             UploadData();
         }
-
-        public async void dodaj()
-        {
-            //User x = new User()
-            //{
-            //    Name = "Marcin",
-            //    Surname = "Gawron",
-            //    Login = "000001n",
-            //    Password = "admin123",
-            //    IsTeacher = true
-            //};
-            //await App.Database.InsertUser(x);
-            //Subject sbj = new Subject()
-            //{
-            //    Name = "Programowanie"
-            //};
-            //await App.Database.InsertSubject(sbj);
-            //Score s = new Score()
-            //{
-            //    User_id = 1,
-            //    Subject_id = 1,
-            //    Subject_name = "Programowanie",
-            //    Value = "5+",
-            //    Date = DateTime.Now,
-            //    Description = "Sprawdzian",
-            //    Period = "Okres 1"
-            //};
-            //await App.Database.InsertScore(s);
-        }
-
         public async void UploadData()
         {
             LV_UserScores.ItemsSource = await App.Database.GetScories();
-
             List<List<string>> period1_Scories = new List<List<string>>();
             List<List<string>> period2_Scories = new List<List<string>>();
 
@@ -93,6 +61,10 @@ namespace MG_KK_Git
 
             LV_UserScores_Period_1.ItemsSource = period1_Scories;
             LV_UserScores_Period_2.ItemsSource = period2_Scories;
+        }
+        private void TI_Logout_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }

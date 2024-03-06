@@ -1,16 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MG_KK_Git.MainTabbed"
+             x:Class="MG_KK_Git.StudentMainPage"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            NavigationPage.HasNavigationBar="False"
+            NavigationPage.HasNavigationBar="True"
+            NavigationPage.HasBackButton="False"
             BackgroundColor="Black"
             android:TabbedPage.ToolbarPlacement="Bottom"
             SelectedTabColor="White"
             UnselectedTabColor="DimGray"
             >
-  <!--Pages can be added as references or inline-->
-    <ContentPage IconImageSource="home.png" BackgroundColor="#3e3e3e">
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="Wyloguj się" Clicked="TI_Logout_Clicked"/>
+    </TabbedPage.ToolbarItems>
+    <ContentPage x:Name="CP_HomePage" IconImageSource="home.png" BackgroundColor="#3e3e3e">
         <ContentPage.Content>
             <StackLayout>
                 <Label Text="Oceny ucznia" HorizontalOptions="Center" Margin="0,10,0,0" FontSize="20" TextColor="White"/>
@@ -43,7 +46,7 @@
                                                     <RowDefinition/>
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="20"/>
+                                                    <ColumnDefinition Width="70"/>
                                                     <ColumnDefinition/>
                                                 </Grid.ColumnDefinitions>
                                                 <Label Text="{Binding Value}" Grid.RowSpan="2" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40"/>
@@ -61,10 +64,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-
         </ContentPage.Content>
     </ContentPage>
-    <TabbedPage IconImageSource="scores.png" BarBackgroundColor="#3e3e3e" BackgroundColor="#3e3e3e" SelectedTabColor="White" UnselectedTabColor="DimGray">
+    <TabbedPage x:Name="TB_StudentDetails" IconImageSource="scores.png" BarBackgroundColor="#3e3e3e" BackgroundColor="#3e3e3e" SelectedTabColor="White" UnselectedTabColor="DimGray">
         <ContentPage Title="Okres 1">
             <ContentPage.Content>
                 <ListView x:Name="LV_UserScores_Period_1" RowHeight="150" SelectionMode="None" Margin="0,10,0,0">
@@ -110,34 +112,4 @@
             </ContentPage.Content>
         </ContentPage>
     </TabbedPage>
-    <ContentPage IconImageSource="add.png" BackgroundColor="#3e3e3e">
-        <ContentPage.Content>
-            <StackLayout>
-                <Label Text="Dodaj ocene" HorizontalOptions="Center" Margin="0,10,0,0" FontSize="Large" TextColor="White"/>
-                <StackLayout Margin="10,20,10,0">
-                    <Label Text="Wyberz kategorie" TextColor="white"/>
-                    <Picker x:Name="P_Subject_name">
-                        <Picker.Items>
-                            <x:String></x:String>
-                        </Picker.Items>
-                    </Picker>
-                </StackLayout>
-                <StackLayout Margin="10,20,10,0">
-                    <Label Text="Wyberz ocene" TextColor="white"/>
-                    <Picker x:Name="P_Value">
-                        <Picker.Items>
-                            <x:String></x:String>
-                        </Picker.Items>
-                    </Picker>
-                </StackLayout>
-                <StackLayout Margin="10,20,10,0">
-                    <Label Text="Dodaj opis" TextColor="white"/>
-                    <Editor x:Name="E_Description"/>
-                </StackLayout>
-                <Frame CornerRadius="15" Padding="5">
-                    <Button Text="Dodaj ocenę" BackgroundColor="White"/>
-                </Frame>
-            </StackLayout>
-        </ContentPage.Content>
-    </ContentPage>
 </TabbedPage>

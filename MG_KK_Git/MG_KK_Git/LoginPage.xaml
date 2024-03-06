@@ -3,12 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MG_KK_Git.LoginPage" NavigationPage.HasNavigationBar="False" BackgroundColor="#3e3e3e">
     <ContentPage.Content>
-        <StackLayout Margin="15,25,15,0">
-            <Label Text="Login:" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"/>
-            <Entry x:Name="Login_Entry" TextColor="LightGray" WidthRequest="200"/>
-            <Label Text="Haslo:" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"/>
-            <Entry x:Name="Password_Entry" IsPassword="True" TextColor="LightGray" WidthRequest="200"/>
-            <Button x:Name="Login_Button" Clicked="Login_Button_Clicked" Text="ZALOGUJ" BackgroundColor="CadetBlue"/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout x:Name="SL_LoginView" Margin="15,25,15,0">
+                <Label Text="Login:" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="Login_Entry" TextColor="LightGray" WidthRequest="200"/>
+                <Label Text="Haslo:" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="Password_Entry" IsPassword="True" TextColor="LightGray" WidthRequest="200"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Clicked="Btn_SwapViews_Clicked" Text="Zarejestruj się" BackgroundColor="CadetBlue"/>
+                    <Button x:Name="Login_Button" Grid.Column="1" Clicked="Login_Button_Clicked" Text="ZALOGUJ" BackgroundColor="CadetBlue"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout x:Name="SL_RegisterView" IsVisible="false" Margin="15,25,15,0">
+                <Label Text="Imie:" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="E_Name" TextColor="LightGray" WidthRequest="200"/>
+                <Label Text="Nazwisko:" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="E_Surname" TextColor="LightGray" WidthRequest="200"/>
+                <Label Text="Haslo:" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="Password_Entry_1" IsPassword="True" TextColor="LightGray" WidthRequest="200"/>
+                <Label Text="Haslo:" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="Password_Entry_2" IsPassword="True" TextColor="LightGray" WidthRequest="200"/>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+                    <CheckBox x:Name="CB_IsTeacher" Color="White"/>
+                    <Label Text="Nauczyciel?" VerticalOptions="Center" TextColor="White"/>
+                </StackLayout>
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button  Text="Zaloguj się" Clicked="Btn_SwapViews_Clicked" BackgroundColor="CadetBlue"/>
+                    <Button x:Name="Register_Button" Clicked="Register_Button_Clicked" Grid.Column="1" Text="Zarejestruj się" BackgroundColor="CadetBlue"/>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
+        
 </ContentPage>
